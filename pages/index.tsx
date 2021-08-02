@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import {GetStaticProps} from 'next'
+import Link from 'next/link'
 
-type Props = { timestamp: number }
 
-export default function Home(props: Props) {
+export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
@@ -17,19 +17,12 @@ export default function Home(props: Props) {
         <h1 className={styles.title}>
           Welcome to Next.js!
         </h1>
-        <p> time: {props.timestamp}</p>
+          <Link href={'/isr'}>
+           <a>isr動作確認ページへ</a>
+          </Link>
       </main>
 
     </div>
   )
 }
 
-
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
-  return {
-    props: {
-      timestamp: new Date().getTime()
-    },
-    revalidate: 5
-  };
-}
